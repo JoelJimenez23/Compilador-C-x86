@@ -1,8 +1,55 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+#include "scanner.h"
+#include "parser.h"
+#include "ast.h"
+#include "visitor.h"
 
+using namespace std;
 
-int main(){
+int main(int argc, const char* argv[]) {
 
+	if (argc != 2) {
+        cout << "Número incorrecto de argumentos.\n";
+        cout << "Uso: " << argv[0] << " <archivo_de_entrada>" << endl;
+        return 1;
+    }
 
-	return 0;
+    ifstream infile(argv[1]);
+    if (!infile.is_open()) {
+        cout << "No se pudo abrir el archivo: " << argv[1] << endl;
+        return 1;
+    }
+
+    string input, line;
+    while (getline(infile, line)) {
+        input += line + '\n';
+    }
+    infile.close();
+
+    Scanner scanner1(input.c_str());
+    //Scanner scanner2(input.c_str());
+    ejecutar_scanner(&scanner1, argv[1]);
+		//Parser parser(&scanner2);
+
+    Program* program = parser.parseProgram();     
+        string inputFile(argv[1]);
+        size_t dotPos = inputFile.find_last_of('.');
+        string baseName = (dotPos == string::npos) ? inputFile : inputFile.substr(0, dotPos);
+        string outputFilename = baseName + ".s";
+        ofstream outfile(outputFilename);
+        if (!outfile.is_open()) {
+            cerr << "Error al crear el archivo de salida: " << outputFilename << endl;
+            return 1;
+        }
+
+    cout << "Generando codigo ensamblador en " << outputFilename << endl;
+
+    GenCodeVisitor codigo(outfile);
+    codigo.generar(program);
+    outfile.close();
+    
+
+    return 0;
 }

@@ -1,0 +1,11 @@
+int mod(int& hola){
+    hola = 20;
+    return 0;
+}
+
+int main(){
+    int hola = 10;
+    mod(hola);
+    print(hola);
+    return 0;
+}

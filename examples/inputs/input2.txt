@@ -1,0 +1,15 @@
+struct truck {int all;};
+
+int main(){
+    struct hola {int aja; int fe;} ;
+    hola.aja = 10;
+    hola.fe = 20;
+    int torpedo = hola.fe;
+    print(torpedo);
+    print(hola.aja);
+    truck.all = hola.aja;
+    print(truck.all);
+    truck.all = torpedo;
+    print(truck.all);
+    return 0;
+}

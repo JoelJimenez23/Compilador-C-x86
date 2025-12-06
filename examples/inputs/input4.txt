@@ -1,0 +1,9 @@
+string hola = "joel";
+
+
+int main(){
+    string a = "godis";
+    print(hola);
+    print(a);
+    return 0;
+}

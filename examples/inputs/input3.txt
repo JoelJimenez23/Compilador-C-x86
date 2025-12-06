@@ -1,0 +1,29 @@
+int g1[3] = {1,2,3};
+
+int average(int scores[], int n) {
+    int sum;
+    int i;
+    sum = 0;
+    i = 0;
+    while (i < n) {
+        sum = sum + scores[i];
+        i = i + 1;
+    }
+    return sum;
+}
+
+
+int main() {
+    int g2[3] = {4,5,6};
+
+    print(g1[0]); 
+    print(g1[1]); 
+    print(g1[2]); 
+
+    print(g2[0]); 
+    print(g2[1]); 
+    print(g2[2]); 
+
+    print(average(g1, 3)); 
+    print(average(g2, 3)); 
+}

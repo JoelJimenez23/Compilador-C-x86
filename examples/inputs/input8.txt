@@ -1,0 +1,16 @@
+int suma(int a, int b){
+    int res;
+    res = a + b;
+    return res;
+}
+
+int main(){
+    int x;
+    int y;
+    int z;
+    x = 7;
+    y = 5;
+    z = suma(x, y);  
+    print(z);
+    return 0;
+}

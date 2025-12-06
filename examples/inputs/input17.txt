@@ -1,0 +1,37 @@
+int main() {
+    int a;
+    int b;
+    int c;
+
+    a = 0;
+    b = 0;
+    c = 2;
+
+    if (1) {
+        int x;
+        int y;
+        x = 10;
+        y = 20;
+        a = x + y;    
+    } else {
+        int z;
+        z = 100;
+        a = z;          
+    }
+
+    if (c > 0) {
+        int p;
+        p = 3;
+        b = a + p;    
+    } else {
+        int q;
+        int r;
+        q = 1;
+        r = 2;
+        b = a + q + r;  
+
+    print(a);   
+    print(b);   
+
+    return 0;
+}

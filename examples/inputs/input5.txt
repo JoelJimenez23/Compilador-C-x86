@@ -1,0 +1,10 @@
+int matriz[3];
+
+int main(){
+    matriz[0] = 40;
+    matriz[1] = 50;
+    matriz[2] = 60;
+    int x = matriz[1] + 5;
+    print(x);
+    return 0;
+}

@@ -1,0 +1,17 @@
+struct Student {
+    int a;
+    int b;
+    int c;
+};
+
+int main() {
+    struct Student st;
+    st.a = 10;
+    st.b = 20;
+    st.c = 30;
+    print(st.a);
+    print(st.b);
+    print(st.c);
+
+    return 0;
+}

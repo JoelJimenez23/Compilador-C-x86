@@ -1,0 +1,14 @@
+int main(){
+    int i;
+    int x;
+    int c;
+    i = 0;
+    c = 3;
+    x = 0;
+    while (i < 10) {
+        x = x + c * 2;  
+        i = i + 1;
+    }
+    print(x);   
+    return 0;
+}

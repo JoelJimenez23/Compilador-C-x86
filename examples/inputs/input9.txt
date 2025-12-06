@@ -1,0 +1,13 @@
+int main(){
+    int x;
+    int y;
+    long z;
+    x = 1;
+    y = 10;
+    z = 1000000;
+    x = 20;
+    print(x);  
+    print(y); 
+    print(z); 
+    return 0;
+}

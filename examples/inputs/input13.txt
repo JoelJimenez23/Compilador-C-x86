@@ -1,0 +1,13 @@
+int foo(){
+    int x;
+    x = 10;
+    return x;
+    x = 20;      
+}
+
+int main(){
+    int v;
+    v = foo();   
+    print(v);
+    return 0;
+}
