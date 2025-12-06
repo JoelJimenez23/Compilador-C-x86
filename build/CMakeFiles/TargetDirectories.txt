@@ -1,0 +1,3 @@
+/home/joel/Programacion/Compilador-C-x86/build/CMakeFiles/compiler.dir
+/home/joel/Programacion/Compilador-C-x86/build/CMakeFiles/edit_cache.dir
+/home/joel/Programacion/Compilador-C-x86/build/CMakeFiles/rebuild_cache.dir

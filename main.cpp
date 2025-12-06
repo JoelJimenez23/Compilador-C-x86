@@ -1,10 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "scanner.h"
-#include "parser.h"
-#include "ast.h"
-#include "visitor.h"
+#include "include/scanner.h"
+#include "include/parser.h"
+#include "include/ast.h"
+#include "include/visitor.h"
 
 using namespace std;
 
@@ -28,10 +28,11 @@ int main(int argc, const char* argv[]) {
     }
     infile.close();
 
-    Scanner scanner1(input.c_str());
-    //Scanner scanner2(input.c_str());
-    ejecutar_scanner(&scanner1, argv[1]);
-		//Parser parser(&scanner2);
+    //Scanner scanner1(input.c_str());
+    Scanner scanner2(input.c_str());
+    
+		//ejecutar_scanner(&scanner1, argv[1]);//tokens
+		Parser parser(&scanner2); 
 
     Program* program = parser.parseProgram();     
         string inputFile(argv[1]);

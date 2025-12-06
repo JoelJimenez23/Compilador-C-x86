@@ -17,29 +17,29 @@
 ## Installation
 
 ```sh
-python3 run_all_inputs.py
+mkdir build
+cd  build
+cmake ..
+make 
 ```
 
-This command compiles all the inputs in the inputs dir.
-After running this command we obtain the input_tokens.txt with all the tokens of the input program and the
-input.s assembly x86 file.
-
-
-If you want to run a specific input you could use the next command.
+After building the project you will have a ./compiler executable.
+If you want to compile any file you should the next command.
 
 ```sh
-./compiler input.txt
+./compiler <input_file.txt>
 ```
 
 ## 📝 Especificación del Lenguaje Pseudo-C
 
-El compilador soporta un subconjunto simplificado del lenguaje C, con ciertas extensiones. A continuación, se presenta la gramática formal en notación de Backus-Naur (BNF) simplificada, detallando la estructura sintáctica aceptada.
+The compiler supportws a simplified subset of C. The charts represents the formal grammar in simplified BNF, with the accepted structure.
+
 
 ---
 
 ##  Language Specifications
 
-| Regla | Descripción |
+| Rule | Description |
 | :--- | :--- |
 | **`Program`** | `{ LibraryDecl \| GlobalDeclaration }` |
 | **`LibraryDecl`** | `\# 'include' '<' ID '>' ` |
@@ -51,7 +51,7 @@ El compilador soporta un subconjunto simplificado del lenguaje C, con ciertas ex
 | **`ArrayInit`** | `'{' Exp { ',' Exp } '}'` |
 | **`StructField`** | `Type ID [ '[' NUM ']' ] ';'` |
 
-### 2. Tipos y Parámetros
+### 2. Types and parameters
 
 | Regla | Descripción |
 | :--- | :--- |
@@ -60,42 +60,42 @@ El compilador soporta un subconjunto simplificado del lenguaje C, con ciertas ex
 | **`Param`** | `\| 'int' ID [ '[' ']' ] \| 'struct' ID ID \| 'string' ID` |
 | **`ArgList`** | `Exp { ',' Exp }` |
 
-### 3. Cuerpo de Función (Body) y Declaraciones Locales
+### 3. Function's body and Local Declaration
 
-| Regla | Descripción |
+| Rule | Description |
 | :--- | :--- |
 | **`Body`** | `{ LocalDeclaration \| Statement }` |
 | **`LocalDeclaration`** | `VarDecLocal \| ArrayDecLocal \| StructDecLocal` |
 | **`VarDecLocal`** | `Type ID [ '=' Exp ] ';'` |
 | **`ArrayDecLocal`** | `Type ID '[' Exp ']' [ '=' ArrayInit ] ';'` |
-| **`StructDecLocal`** | `\| 'struct' ID '{' { StructField } '}'` *(Definición local)* |
-| | `\| 'struct' ID ID [ '=' Exp ] ';'` *(Variable local)* |
+| **`StructDecLocal`** | `\| 'struct' ID '{' { StructField } '}'` *(Local definition)* |
+| | `\| 'struct' ID ID [ '=' Exp ] ';'` *(Local variable)* |
 
-### 4. Sentencias (Statements)
+### 4. Statements
 
 | Regla | Descripción |
 | :--- | :--- |
 | **`Statement`** | `AssignStm \| CallStm \| PrintStm \| ReturnStm \| IfStm \| WhileStm` |
 | **`AssignStm`** | `\| ID '=' Exp ';'` |
-| | `\| ID '[' Exp ']' '=' Exp ';'` *(Asignación en Array)* |
-| | `\| ID '.' ID [ '[' Exp ']' ] '=' Exp ';'` *(Asignación en Struct)* |
+| | `\| ID '[' Exp ']' '=' Exp ';'` *(Array assignation)* |
+| | `\| ID '.' ID [ '[' Exp ']' ] '=' Exp ';'` *(Struct assignation)* |
 | **`CallStm`** | `ID '(' [ ArgList ] ')' ';'` |
 | **`PrintStm`** | `'print' '(' Exp ')' ';'` |
 | **`ReturnStm`** | `'return' Exp ';'` |
 | **`IfStm`** | `'if' '(' Exp ')' '{' Body '}' [ 'else' '{' Body '}' ]` |
 | **`WhileStm`** | `'while' '(' Exp ')' '{' Body '}'` |
 
-### 5. Expresiones (Expressions) y Jerarquía de Operadores
+### 5. Expressions y Operators Hierarchy
 
-Las expresiones siguen la jerarquía de operadores estándar, donde `^` (Potencia) tiene la mayor precedencia y `<=` (Comparación) tiene la menor.
+The expressions  follow la standard operators hierarchy, where `^` (Pow) has the highest precedence and `<=` (Compare) the least one.
 
-| Regla | Precedencia y Operadores |
+| Regla |  Precedence and Operators |
 | :--- | :--- |
 | **`Exp`** | `CompExp` |
-| **`CompExp`** | `AddExp [ '<=' AddExp ]` *(Comparación)* |
-| **`AddExp`** | `MultExp { ( '+' \| '-' ) MultExp }` *(Suma/Resta)* |
-| **`MultExp`** | `PowExp { ( '*' \| '/' ) PowExp }` *(Multiplicación/División)* |
-| **`PowExp`** | `Factor [ '^' Factor ]` *(Potencia)* |
+| **`CompExp`** | `AddExp [ '<=' AddExp ]` *(Compare)* |
+| **`AddExp`** | `MultExp { ( '+' \| '-' ) MultExp }` *(Add/Sub)* |
+| **`MultExp`** | `PowExp { ( '*' \| '/' ) PowExp }` *(Mul/Div)* |
+| **`PowExp`** | `Factor [ '^' Factor ]` *(Pow)* |
 | **`Factor`** | `\| NUM` |
 | | `\| 'true' \| 'false'` |
 | | `\| STRING_LITERAL` |

@@ -1,0 +1,22 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/compiler.dir/link.d"
+  "CMakeFiles/compiler.dir/main.cpp.o"
+  "CMakeFiles/compiler.dir/main.cpp.o.d"
+  "CMakeFiles/compiler.dir/src/ast.cpp.o"
+  "CMakeFiles/compiler.dir/src/ast.cpp.o.d"
+  "CMakeFiles/compiler.dir/src/parser.cpp.o"
+  "CMakeFiles/compiler.dir/src/parser.cpp.o.d"
+  "CMakeFiles/compiler.dir/src/scanner.cpp.o"
+  "CMakeFiles/compiler.dir/src/scanner.cpp.o.d"
+  "CMakeFiles/compiler.dir/src/token.cpp.o"
+  "CMakeFiles/compiler.dir/src/token.cpp.o.d"
+  "CMakeFiles/compiler.dir/src/visitor.cpp.o"
+  "CMakeFiles/compiler.dir/src/visitor.cpp.o.d"
+  "compiler"
+  "compiler.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/compiler.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
