@@ -30,7 +30,14 @@ If you want to compile any file you should the next command.
 ./compiler <input_file.txt>
 ```
 
-## 📝 Especificación del Lenguaje Pseudo-C
+## CLI APP
+This project includes an x86 intepreter to analyse the generated assembly code. You can see the registers and stack state during execution.
+You can use it with the next commands:
+```sh
+python3 app.py <compiler_binary> <c-like-program.txt>
+```
+
+## 📝 Pseudo-C Language Specifications 
 
 The compiler supportws a simplified subset of C. The charts represents the formal grammar in simplified BNF, with the accepted structure.
 
